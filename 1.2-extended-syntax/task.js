@@ -18,37 +18,44 @@ function getResult(a, b, c) {
         x.push((-b + Math.sqrt(d)) / (2 * a));
         x.push((-b - Math.sqrt(d)) / (2 * a));
     };
-
+    
     return x;
 };
-/*
+
 function getAverageMark(marks){
     // код для задачи №2 писать здесь
-    // создаем массив для хранения оценок
-    let marks = [];
-    // Проверить количество введенных оценок    
+    // создаем массив для хранения оценок 
+    let sumMarks = 0;
+    let averageMark = 0;
+    let newMarks = [];
+    // Проверить количество введенных оценок
     if (marks.length === 0) {
-        return `0`
+        return 0
     };
-    
+
     if (marks.length > 5) {
-        console.log('Cчитаются только первые 5')
-        marks.slice(0, 4);
+        console.log('Cчитаются только первые 5');
+        newMarks = marks.slice(0, 5);
+
+        for (let i = 0; i < newMarks.length; i++) {
+            sumMarks += newMarks[i];
+        };
+
+        averageMark = sumMarks / newMarks.length;
+        return averageMark;
+
+    } else {
+        for (let i = 0; i < marks.length; i++) {
+            sumMarks += marks[i];
+        }
+        averageMark = sumMarks / marks.length;
+        return averageMark;
     };
-    // считаем количество оценок
-    for (let i = 0; i < marks.lengh; i++) {
-        SumMarks += marks[i];
-    };
-    // вычисляем среднее
-    averageMark = sumMarks / marks.length;
-    
-    return averageMark;
-    // return averageMark;
 };
 
 function askDrink(name,dateOfBirthday){
     // код для задачи №3 писать здесь
-    let name = '';
+    
     let currentDate = new Date();
     let personAge = currentDate.getFullYear() - dateOfBirthday.getFullYear();
     let text;
@@ -61,4 +68,3 @@ function askDrink(name,dateOfBirthday){
     
     return text;
 };
-*/
