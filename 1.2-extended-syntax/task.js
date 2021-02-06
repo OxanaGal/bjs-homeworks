@@ -31,7 +31,7 @@ function getAverageMark(marks){
 
     if (marks.length > 5) {
         console.log('Cчитаются только первые 5');
-        marks = marks.splice(5);
+        marks.splice(5);
     };
         // считаем количество оценок
         
