@@ -1,14 +1,11 @@
+'use strict';
+
 function getResult(a, b, c) {
-    'use strict';
     // код для задачи №1 писать здесь
     //Вычислите дискриминант для решения уравнения.
     let d = (b ** 2) - (4 * a * c);
     //Результатом функции должен быть **массив**.
     let x = [];
-
-    if (d < 0) {
-        return x;
-    };
 
     if (d == 0) {
         x.push((-b) / 2 * a);
@@ -26,6 +23,29 @@ function getAverageMark(marks){
     // код для задачи №2 писать здесь
     // создаем массив для хранения оценок 
     let sumMarks = 0;
+            
+    // Проверить количество введенных оценок
+    if (marks.length === 0) {
+        return 0
+    };
+
+    if (marks.length > 5) {
+        console.log('Cчитаются только первые 5');
+        marks = marks.splice(5);
+    };
+        // считаем количество оценок
+        
+    for (let i = 0; i < marks.length; i++) {
+        sumMarks += marks[i];
+      };
+    
+    return sumMarks / marks.length;
+};
+
+/*function getAverageMark(marks){
+    // код для задачи №2 писать здесь
+    // создаем массив для хранения оценок 
+    let sumMarks = 0;
     let averageMark = 0;
     let newMarks = [];
     // Проверить количество введенных оценок
@@ -35,7 +55,7 @@ function getAverageMark(marks){
 
     if (marks.length > 5) {
         console.log('Cчитаются только первые 5');
-        newMarks = marks.slice(0, 5);
+        newMarks = marks.splice(0, 4);
 
         for (let i = 0; i < newMarks.length; i++) {
             sumMarks += newMarks[i];
@@ -51,20 +71,16 @@ function getAverageMark(marks){
         averageMark = sumMarks / marks.length;
         return averageMark;
     };
-};
+};*/
 
 function askDrink(name,dateOfBirthday){
     // код для задачи №3 писать здесь
     
-    let currentDate = new Date();
-    let personAge = currentDate.getFullYear() - dateOfBirthday.getFullYear();
-    let text;
-
-    if (personAge >= 18) {
-        text = `Не желаете ли олд-фэшн, ${name}?`;    
-      } else {
-        text = `Сожалею, ${name}, но я не могу вам продать алкоголь. Могу предложить вам замечательный клюквенный компот!`;        
-      };
+    let personAge = new Date().getFullYear() - dateOfBirthday.getFullYear();
     
-    return text;
+    if (personAge >= 18) {
+        return `Не желаете ли олд-фэшн, ${name}?`;    
+      } else {
+        return `Сожалею, ${name}, но я не могу вам продать алкоголь. Могу предложить вам замечательный клюквенный компот!`;        
+      };
 };
