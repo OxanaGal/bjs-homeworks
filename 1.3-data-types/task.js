@@ -2,20 +2,21 @@
 
 function calculateTotalMortgage(percent, contribution, amount, date) {
     // код для задачи №1 писать здесь
-    if (percent.isNaN || !percent.length || percent <= 0 || percent > 100) {
-        alert `Параметр «Процентная ставка» содержит неправильное значение`;
+    if (isNaN(percent) ||  percent <= 0 || percent > 100) {
+        return `Параметр «Процентная ставка» содержит неправильное значение ${percent}`;
     };
     
-    if (contribution.isNaN || !percent.length || contribution < 0) {
-        alert `Параметр «Процентная ставка» содержит неправильное значение`;
+    if (isNaN(contribution) || contribution < 0) {
+        return `Параметр «Начальный взнос» содержит неправильное значение ${contribution}`;
     };
     
-    if (amount.isNaN || !percent.length || amount <= 0) {
-        alert `Параметр «Общая стоимость» содержит неправильное значение`;
+    if (isNaN(amount) ||  amount <= 0 ) {
+        return `Параметр «Общая стоимость» содержит неправильное значение ${amount}`;
     };
     
-    if (date.isNaN || date < new Date()) {
-        alert `Параметр «Срок ипотеки» содержит неправильное значение`;
+    if (isNaN(Date.parse(date)) || date < new Date()) {
+        let dateFinal = date.toLocaleDateString()
+        return `Параметр «Срок ипотеки» содержит неправильное значение ${dateFinal}`
     };
     
     let primaryLoan = amount - contribution;
@@ -23,7 +24,7 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
     let monthPercent = percent / 100 / 12 ;
     let monthlyPay = primaryLoan *(monthPercent + monthPercent /(((1 + monthPercent)**monthAmount)-1));
     let totalAmount = monthlyPay * monthAmount;
-    return Number(totalAmount.toFixed(2));
+    return parseFloat(totalAmount.toFixed(2));
 };
 
 function getGreeting(name) {
