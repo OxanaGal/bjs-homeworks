@@ -103,7 +103,7 @@ class Library{
     giveBookByName(bookName){
         for(let key in this.books){
             if (this.books[key].name === bookName){
-                let givenBook = this.books[key];
+                const givenBook = this.books[key];
                 this.books.splice(key, 1);
                 return givenBook
             };
